@@ -1,7 +1,7 @@
 // src/survey_json.ts
 export const surveyJson = {
-  title: "ŠÂ‹«ƒf[ƒ^’²¸•[ (ƒTƒ“ƒvƒ‹)",
-  description: "–‹ÆŠ‚ÌƒGƒlƒ‹ƒM[g—pó‹µ‚É‚Â‚¢‚Ä‚²‰ñ“š‚­‚¾‚³‚¢B",
+  title: "ç’°å¢ƒãƒ‡ãƒ¼ã‚¿èª¿æŸ»ç¥¨ (ã‚µãƒ³ãƒ—ãƒ«)",
+  description: "äº‹æ¥­æ‰€ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼ä½¿ç”¨çŠ¶æ³ã«ã¤ã„ã¦ã”å›ç­”ãã ã•ã„ã€‚",
   pages: [
     {
       name: "basic_info",
@@ -9,16 +9,16 @@ export const surveyJson = {
         {
           type: "text",
           name: "company_name",
-          title: "–‹ÆÒ–¼",
-          isRequired: true
+          title: "äº‹æ¥­è€…å",
+          isRequired: true,
         },
         {
           type: "dropdown",
           name: "business_sector",
-          title: "–‹Æ‹æ•ª",
-          choices: ["»‘¢‹Æ", "ƒT[ƒrƒX‹Æ", "¬”„E‰µ”„‹Æ", "‚»‚Ì‘¼"]
-        }
-      ]
+          title: "äº‹æ¥­åŒºåˆ†",
+          choices: ["è£½é€ æ¥­", "ã‚µãƒ¼ãƒ“ã‚¹æ¥­", "å°å£²ãƒ»å¸å£²æ¥­", "ãã®ä»–"],
+        },
+      ],
     },
     {
       name: "energy_data",
@@ -26,19 +26,19 @@ export const surveyJson = {
         {
           type: "text",
           name: "electricity_usage",
-          title: "ŒŠÔ“d—Íg—p—Ê (kWh)",
+          title: "æœˆé–“é›»åŠ›ä½¿ç”¨é‡ (kWh)",
           inputType: "number",
-          min: 0
+          min: 0,
         },
         {
           type: "text",
           name: "gas_usage",
-          title: "ŒŠÔƒKƒXg—p—Ê (m3)",
+          title: "æœˆé–“ã‚¬ã‚¹ä½¿ç”¨é‡ (m3)",
           inputType: "number",
-          min: 0
-        }
-      ]
-    }
+          min: 0,
+        },
+      ],
+    },
   ],
-  showProgressBar: "top" // ã•”‚Éi’»ƒo[‚ğ•\¦
+  showProgressBar: "top", // ä¸Šéƒ¨ã«é€²æ—ãƒãƒ¼ã‚’è¡¨ç¤º
 };
