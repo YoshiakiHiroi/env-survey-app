@@ -28,14 +28,28 @@ export const surveyJson = {
           name: "electricity_usage",
           title: "月間電力使用量 (kWh)",
           inputType: "number",
-          min: 0,
+          validators: [
+            {
+              type: "numeric",
+              text: "0以上、1,000,000以下の数値を入力してください",
+              minValue: 0,
+              maxValue: 1000000,
+            },
+          ],
         },
         {
           type: "text",
           name: "gas_usage",
           title: "月間ガス使用量 (m3)",
           inputType: "number",
-          min: 0,
+          validators: [
+            {
+              type: "numeric",
+              text: "0以上、1,000,000以下の数値を入力してください",
+              minValue: 0,
+              maxValue: 1000000,
+            },
+          ],
         },
       ],
     },
