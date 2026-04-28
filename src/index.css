@@ -1,111 +1,171 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: #17202a;
+  background: #f5f7f8;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(180deg, #eef4f1 0, #f5f7f8 280px),
+    #f5f7f8;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+#root {
+  min-height: 100svh;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+.app-shell {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: 24px;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
+.survey-note {
+  border-left: 4px solid #2f7d68;
+  background: #eef7f3;
+  color: #24352f;
+  padding: 12px 14px;
+  line-height: 1.6;
+}
+
+.survey-heading {
+  color: #145362;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 4px 0 8px;
+  padding: 10px 12px;
+  border-left: 4px solid #1c6b7d;
+  background: #eef3f5;
   border-radius: 4px;
-  color: var(--text-h);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.survey-heading--co2 {
+  border-left-color: #1c6b7d;
+  background: #e8f3f0;
+  color: #145362;
+}
+
+.survey-heading--energy {
+  border-left-color: #4c7a2b;
+  background: #edf6e8;
+  color: #31551d;
+}
+
+.survey-heading--fuel {
+  border-left-color: #b56a17;
+  background: #fff3df;
+  color: #74450d;
+}
+
+.survey-heading--water {
+  border-left-color: #2c72a2;
+  background: #e7f3fb;
+  color: #174e73;
+}
+
+.survey-heading--waste {
+  border-left-color: #6f5a8f;
+  background: #f1edf7;
+  color: #4c3d68;
+}
+
+.sd-root-modern {
+  --sjs-primary-backcolor: #1c6b7d;
+  --sjs-primary-backcolor-dark: #145362;
+  --sjs-primary-backcolor-light: rgba(28, 107, 125, 0.12);
+  --sjs-special-red: #b42318;
+  --sjs-general-backcolor: #ffffff;
+  --sjs-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.sd-container-modern {
+  max-width: none;
+}
+
+.sd-body {
+  max-width: none;
+}
+
+.sd-page {
+  min-width: 0;
+}
+
+.sd-question {
+  overflow-x: auto;
+}
+
+.sd-table-wrapper,
+.sd-matrixdynamic__content {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.sd-table {
+  width: 100%;
+  min-width: 100%;
+}
+
+.sd-table th,
+.sd-table td {
+  vertical-align: top;
+}
+
+.sd-table th {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.survey-target-matrix .sd-table {
+  width: auto;
+  min-width: 720px;
+}
+
+.survey-target-matrix .sd-table th,
+.survey-target-matrix .sd-table td {
+  max-width: 180px;
+}
+
+.survey-target-detail .sd-multipletext {
+  max-width: 760px;
+}
+
+.survey-target-detail .sd-multipletext__item-container {
+  min-width: 0;
+}
+
+.survey-target-group {
+  border: 1px solid #c9ddd7;
+  border-radius: 6px;
+  background: #fbfefd;
+  padding: 4px 12px 12px;
+}
+
+.sd-question__title {
+  line-height: 1.5;
+}
+
+textarea.sd-input {
+  min-height: 96px;
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding: 12px;
+  }
 }

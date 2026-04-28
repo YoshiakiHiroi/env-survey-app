@@ -24,10 +24,9 @@ function App() {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
-      {/* アンケート画面を表示 */}
+    <main className="app-shell">
       <Survey model={survey} />
-    </div>
+    </main>
   );
 }
 
