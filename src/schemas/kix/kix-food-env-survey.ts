@@ -235,19 +235,75 @@ function targetDetailFields(
   defaultValue?: Record<string, unknown>,
 ): SurveyElement {
   return {
-    type: "multipletext",
+    type: "panel",
     name,
     title,
     cssClass: "survey-target-detail",
-    defaultValue,
-    items: [
-      { name: "target_year", title: "目標年度", inputType: "number" },
-      { name: "base_year", title: "基準年度", inputType: "number" },
-      { name: "reduction_value", title: "削減目標値", inputType: "number" },
-      { name: "unit", title: "単位" },
-      { name: "base_amount", title: baseAmountTitle, inputType: "number" },
+    elements: [
+      {
+        type: "text",
+        name: `${name}_target_year`,
+        title: "1) 目標年度",
+        inputType: "number",
+        defaultValue: defaultValue?.target_year,
+        width: "230px",
+        minWidth: "190px",
+        cssClass: "target-detail-field target-year-with-suffix",
+      },
+      {
+        type: "text",
+        name: `${name}_base_year`,
+        title: "2) 基準年度",
+        inputType: "number",
+        defaultValue: defaultValue?.base_year,
+        startWithNewLine: false,
+        width: "230px",
+        minWidth: "190px",
+        cssClass: "target-detail-field target-base-year-with-suffix",
+      },
+      {
+        type: "text",
+        name: `${name}_reduction_value`,
+        title: "3) 削減目標値",
+        inputType: "number",
+        startWithNewLine: false,
+        width: "170px",
+        minWidth: "150px",
+        cssClass: "target-detail-field target-reduction-value",
+      },
+      {
+        type: "dropdown",
+        name: `${name}_unit`,
+        title: "（単位）",
+        choices: ["%", "t-CO2"],
+        allowClear: false,
+        startWithNewLine: false,
+        width: "240px",
+        minWidth: "210px",
+        cssClass: "target-detail-field target-reduction-unit-with-suffix",
+      },
+      {
+        type: "text",
+        name: `${name}_base_amount`,
+        title: baseAmountTitle,
+        inputType: "number",
+        width: "310px",
+        minWidth: "260px",
+        cssClass: "target-detail-field target-base-amount-with-suffix",
+      },
       ...(factorTitle
-        ? [{ name: "co2_factor", title: factorTitle, inputType: "number" }]
+        ? [
+            {
+              type: "text",
+              name: `${name}_co2_factor`,
+              title: factorTitle.replace(" (t-CO2/kWh)", ""),
+              inputType: "number",
+              startWithNewLine: false,
+              width: "360px",
+              minWidth: "300px",
+              cssClass: "target-detail-field target-co2-factor-with-suffix",
+            },
+          ]
         : []),
     ],
     ...visible(visibleIf),
@@ -433,7 +489,7 @@ const updateStatusChoices = (subject: string): SurveyChoice[] => [
 ];
 
 export const surveyJson = {
-  title: "2025年度 関西国際空港 環境関連データ 調査票 (KIX飲食テナント様)",
+  title: "2025年度 仮想空港 環境関連データ 調査票 (飲食テナント)",
   showProgressBar: "top",
   firstPageIsStartPage: false,
   questionTitleLocation: "top",
@@ -526,7 +582,7 @@ export const surveyJson = {
       elements: [
         radio(
           "co2_target_status",
-          "(1) 関西国際空港における店舗のCO2排出量についてご回答ください。",
+          "(1) 仮想空港における店舗のCO2排出量についてご回答ください。",
           co2TargetChoices,
         ),
         {
@@ -554,7 +610,11 @@ export const surveyJson = {
               "想定する電気のCO2排出係数 (t-CO2/kWh)",
               { target_year: 2050, base_year: 2013 },
             ),
-            heading("co2_target_other_heading", "③上記以外の目標年度の内容", "co2"),
+            heading(
+              "co2_target_other_heading",
+              "③上記以外の目標年度の内容",
+              "co2",
+            ),
             targetDetailFields(
               "co2_target_other",
               "上記以外の目標内容",
@@ -587,11 +647,11 @@ export const surveyJson = {
           [
             {
               value: "1",
-              text: "1. 店舗で電気を使用しており、請求は関西エアポート(株)から受けている。",
+              text: "1. 店舗で電気を使用しており、請求は仮想エアポート(株)から受けている。",
             },
             {
               value: "2",
-              text: "2. 店舗で電気を使用しているが、請求は関西エアポート(株)から受けていない。",
+              text: "2. 店舗で電気を使用しているが、請求は仮想エアポート(株)から受けていない。",
             },
             { value: "3", text: "3. 空港内店舗で電気は使用していない。" },
           ],
@@ -789,11 +849,11 @@ export const surveyJson = {
           [
             {
               value: "1",
-              text: "1. 店舗でガスを使用しており、請求は関西エアポート(株)から受けている。",
+              text: "1. 店舗でガスを使用しており、請求は仮想エアポート(株)から受けている。",
             },
             {
               value: "2",
-              text: "2. 店舗でガスを使用しているが、請求は関西エアポート(株)から受けていない。",
+              text: "2. 店舗でガスを使用しているが、請求は仮想エアポート(株)から受けていない。",
             },
           ],
         ),
@@ -1102,15 +1162,15 @@ export const surveyJson = {
       elements: [
         radio(
           "industrial_waste_status",
-          "(1) 関西国際空港で発生した貴社の産業廃棄物の処理状況についてご回答ください。",
+          "(1) 仮想国際空港で発生した貴社の産業廃棄物の処理状況についてご回答ください。",
           [
             {
               value: "1",
-              text: "1. 関西国際空港では産業廃棄物は発生していない。",
+              text: "1. 仮想国際空港では産業廃棄物は発生していない。",
             },
             {
               value: "2",
-              text: "2. 関西国際空港で発生し処理を委託した産業廃棄物がある。",
+              text: "2. 仮想国際空港で発生し処理を委託した産業廃棄物がある。",
             },
           ],
         ),

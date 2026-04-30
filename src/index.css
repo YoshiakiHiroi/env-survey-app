@@ -20,9 +20,7 @@
 body {
   margin: 0;
   min-width: 320px;
-  background:
-    linear-gradient(180deg, #eef4f1 0, #f5f7f8 280px),
-    #f5f7f8;
+  background: linear-gradient(180deg, #eef4f1 0, #f5f7f8 280px), #f5f7f8;
 }
 
 #root {
@@ -91,7 +89,8 @@ body {
   --sjs-primary-backcolor-light: rgba(28, 107, 125, 0.12);
   --sjs-special-red: #b42318;
   --sjs-general-backcolor: #ffffff;
-  --sjs-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sjs-font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .sd-container-modern {
@@ -141,19 +140,113 @@ body {
   max-width: 180px;
 }
 
-.survey-target-detail .sd-multipletext {
-  max-width: 760px;
-}
-
-.survey-target-detail .sd-multipletext__item-container {
-  min-width: 0;
-}
-
 .survey-target-group {
   border: 1px solid #c9ddd7;
   border-radius: 6px;
   background: #fbfefd;
   padding: 4px 12px 12px;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_target_year"],
+.sd-question[data-name^="co2_target_"][data-name$="_base_year"],
+.sd-question[data-name^="co2_target_"][data-name$="_reduction_value"],
+.sd-question[data-name^="co2_target_"][data-name$="_unit"],
+.sd-question[data-name^="co2_target_"][data-name$="_base_amount"],
+.sd-question[data-name^="co2_target_"][data-name$="_co2_factor"] {
+  min-width: 0;
+  overflow: visible;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_target_year"]
+  .sd-question__title,
+.sd-question[data-name^="co2_target_"][data-name$="_base_year"]
+  .sd-question__title,
+.sd-question[data-name^="co2_target_"][data-name$="_reduction_value"]
+  .sd-question__title,
+.sd-question[data-name^="co2_target_"][data-name$="_unit"] .sd-question__title,
+.sd-question[data-name^="co2_target_"][data-name$="_base_amount"]
+  .sd-question__title,
+.sd-question[data-name^="co2_target_"][data-name$="_co2_factor"]
+  .sd-question__title {
+  white-space: nowrap;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_target_year"]
+  .sd-question__content,
+.sd-question[data-name^="co2_target_"][data-name$="_base_year"]
+  .sd-question__content,
+.sd-question[data-name^="co2_target_"][data-name$="_unit"]
+  .sd-question__content,
+.sd-question[data-name^="co2_target_"][data-name$="_base_amount"]
+  .sd-question__content,
+.sd-question[data-name^="co2_target_"][data-name$="_co2_factor"]
+  .sd-question__content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: visible;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_target_year"] .sd-input,
+.sd-question[data-name^="co2_target_"][data-name$="_base_year"] .sd-input,
+.sd-question[data-name^="co2_target_"][data-name$="_reduction_value"] .sd-input,
+.sd-question[data-name^="co2_target_"][data-name$="_unit"] .sd-input,
+.sd-question[data-name^="co2_target_"][data-name$="_base_amount"] .sd-input,
+.sd-question[data-name^="co2_target_"][data-name$="_co2_factor"] .sd-input {
+  min-width: 0;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_target_year"] .sd-input,
+.sd-question[data-name^="co2_target_"][data-name$="_base_year"] .sd-input {
+  width: 8.5rem;
+  flex: 0 1 8.5rem;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_reduction_value"] .sd-input,
+.sd-question[data-name^="co2_target_"][data-name$="_base_amount"] .sd-input,
+.sd-question[data-name^="co2_target_"][data-name$="_co2_factor"] .sd-input {
+  width: 9rem;
+  flex: 0 1 9rem;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_unit"] .sd-input {
+  width: 10.5rem;
+  flex: 0 0 10.5rem;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_target_year"]
+  .sd-question__content::after {
+  content: "年度までに";
+  color: #3c4b45;
+  white-space: nowrap;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_base_year"]
+  .sd-question__content::after {
+  content: "年度比";
+  color: #3c4b45;
+  white-space: nowrap;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_unit"]
+  .sd-question__content::after {
+  content: "削減";
+  color: #3c4b45;
+  white-space: nowrap;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_base_amount"]
+  .sd-question__content::after {
+  content: "( 想定する電気のCO2排出係数";
+  color: #3c4b45;
+  white-space: nowrap;
+}
+
+.sd-question[data-name^="co2_target_"][data-name$="_co2_factor"]
+  .sd-question__content::after {
+  content: "t-CO2/kWh)";
+  color: #3c4b45;
+  white-space: nowrap;
 }
 
 .sd-question__title {
@@ -167,5 +260,38 @@ textarea.sd-input {
 @media (max-width: 768px) {
   .app-shell {
     padding: 12px;
+  }
+
+  .sd-question[data-name^="co2_target_"][data-name$="_target_year"],
+  .sd-question[data-name^="co2_target_"][data-name$="_base_year"],
+  .sd-question[data-name^="co2_target_"][data-name$="_reduction_value"],
+  .sd-question[data-name^="co2_target_"][data-name$="_unit"],
+  .sd-question[data-name^="co2_target_"][data-name$="_base_amount"],
+  .sd-question[data-name^="co2_target_"][data-name$="_co2_factor"] {
+    width: 100% !important;
+  }
+
+  .sd-question[data-name^="co2_target_"][data-name$="_target_year"]
+    .sd-question__content,
+  .sd-question[data-name^="co2_target_"][data-name$="_base_year"]
+    .sd-question__content,
+  .sd-question[data-name^="co2_target_"][data-name$="_unit"]
+    .sd-question__content,
+  .sd-question[data-name^="co2_target_"][data-name$="_base_amount"]
+    .sd-question__content,
+  .sd-question[data-name^="co2_target_"][data-name$="_co2_factor"]
+    .sd-question__content {
+    flex-wrap: wrap;
+  }
+
+  .sd-question[data-name^="co2_target_"][data-name$="_target_year"] .sd-input,
+  .sd-question[data-name^="co2_target_"][data-name$="_base_year"] .sd-input,
+  .sd-question[data-name^="co2_target_"][data-name$="_reduction_value"]
+    .sd-input,
+  .sd-question[data-name^="co2_target_"][data-name$="_unit"] .sd-input,
+  .sd-question[data-name^="co2_target_"][data-name$="_base_amount"] .sd-input,
+  .sd-question[data-name^="co2_target_"][data-name$="_co2_factor"] .sd-input {
+    flex: 1 1 10rem;
+    width: min(100%, 14rem);
   }
 }
